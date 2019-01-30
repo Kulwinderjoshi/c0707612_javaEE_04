@@ -1,37 +1,87 @@
-## Welcome to GitHub Pages
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package jan30;
+import java.util.*;
+/**
+ *
+ * @author 707612
+ */
+public class Jan30 {
 
-You can use the [editor on GitHub](https://github.com/Kulwinderjoshi/c0707612_javaEE_04/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        jungle j1 = new jungle();
+        j1.launch();
+        System.out.println("Number of Lion winners is " + jungle.NumberOfLionWinners);
+        System.out.println("Number of Tiger winners is " + jungle.NumberOfTigerWinners);
+       
+    }
+}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+// let's make a Super Class called FELINE
+class Feline{
+    public String name;
+    public int Strength;
 
-### Markdown
+    public Feline(){
+         Strength = SetStrength();
+     }
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    public int SetStrength(){
+        Random rand = new Random(); 
+        return rand.nextInt(100);
+    }
+}
+ class lion extends Feline{
 
-```markdown
-Syntax highlighted code block
+ }  
 
-# Header 1
-## Header 2
-### Header 3
+class tiger extends Feline{
+  public tiger(){
 
-- Bulleted
-- List
+  }
+     }
 
-1. Numbered
-2. List
+class jungle {
+    // these are Class Instance Variables:
+    // because they are declared at the Class Level
+    // here is where the TYPE is defined
+    public static int NumberOfLionWinners = 0;
+    public static int NumberOfTigerWinners = 0;
 
-**Bold** and _Italic_ and `Code` text
+     lion LION1;
+     tiger TIGER1;
 
-[Link](url) and ![Image](src)
-```
+     public void launch(){
+         // HERE is where the OBJECT IS CREATED
+            LION1 = new lion();
+            TIGER1 = new tiger();
+            for ( int competitionNumber = 0; competitionNumber<100; competitionNumber++ ){
+                doCompetition(new lion(), new tiger());
+            }
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+            doCompetition(LION1, TIGER1);
 
-### Jekyll Themes
+     }
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Kulwinderjoshi/c0707612_javaEE_04/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+     public void doCompetition(Feline lion, Feline tiger){
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+         if (lion.Strength > tiger.Strength){
+             jungle.NumberOfLionWinners++;
+         } else 
+             {
+             jungle.NumberOfTigerWinners++;
+         } 
+         
+         
+                        
+                 
+                     
+     
+     }
+}
